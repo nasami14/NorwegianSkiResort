@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.TransportationActivity"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@color/azur"
+    >
+
+    <TextView
+        android:id="@+id/transportaion_label"
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Find Transportation"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:layout_gravity="center_horizontal"
+        android:paddingBottom="30dp"
+        />
+
+        <TextView
+            android:layout_below="@+id/transportaion_label"
+            android:id="@+id/select_src"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Source:"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            />
+
+
+        <Spinner
+            android:layout_below="@+id/select_src"
+            android:id="@+id/source"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="20dp"
+            >
+        </Spinner>
+
+    <TextView
+        android:id="@+id/select_dest"
+        android:layout_below="@id/source"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="Destination:"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        />
+        <Spinner
+            android:paddingTop="10dp"
+            android:layout_below="@+id/select_dest"
+            android:id="@+id/destination"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:paddingBottom="20dp"
+            tools:listheader="Destination"
+            >
+        </Spinner>
+
+    <Button
+        android:layout_below="@+id/destination"
+        android:id="@+id/btn_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_round_shape_style"
+        android:text="Search Transportation"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+
+
+</RelativeLayout>

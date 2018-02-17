@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.AboutActivity"
+    android:orientation="vertical"
+    android:paddingTop="20dp"
+    android:background="@color/azur"
+    >
+
+    <TableRow
+        android:padding="5dp"
+        >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name : "
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        />
+    <TextView
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Amir Suleiman Naseri"
+        android:textSize="16dp"
+        />
+    </TableRow>
+
+    <TableRow
+        android:padding="5dp"
+        >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phone : "
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="(0047) 984 15 641"
+        android:autoLink="phone"
+        />
+    </TableRow>
+
+
+    <TableRow
+        android:padding="5dp"
+        >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email : "
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:text="sulena@online.no"
+        android:autoLink="email"
+        />
+    </TableRow>
+
+    <TableRow
+        android:padding="5dp"
+        >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Website : "
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="http://www.amirhjelperdeg.com"
+        android:autoLink="web"
+        />
+    </TableRow>
+
+
+</TableLayout>

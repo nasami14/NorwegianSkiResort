@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_margin="20dp"
+    android:layout_height="wrap_content"
+    tools:context=".activities.ResortDetail"
+
+    >
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="20dp"
+        >
+
+      <ImageView
+          android:id="@+id/closePopup"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="end"
+          android:src="@drawable/ic_close_white_24dp"
+          android:background="@drawable/circle_background_pink"
+          />
+    <TextView
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Run/Slopes"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        />
+
+        <View
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_below="@+id/rd_address"
+            android:background="@color/lightGrey"></View>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:text="Total"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+
+            />
+
+
+        <TextView
+            android:id="@+id/popup_total_slope"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:text="13 KM"
+            android:textColor="@color/black"
+            />
+
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/slopeDifficulties"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Slope Difficulties:"
+                android:textStyle="bold"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:weightSum="3"
+                >
+            <TextView
+                android:id="@+id/slope_easy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Easy"
+                android:layout_weight="1"
+
+                />
+
+            <TextView
+                android:id="@+id/slope_Intermediate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="45dp"
+                android:text="Intermediate"
+                />
+
+            <TextView
+                android:id="@+id/slope_Advanced"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Advanced"
+                />
+</LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
+                android:weightSum="3"
+                android:layout_marginTop="50dp"
+                >
+
+            <TextView
+                android:id="@+id/easykm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/green"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:text="89.0 KM"
+                />
+
+            <TextView
+                android:id="@+id/intermediateKM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/yellow"
+                android:textColor="@color/white"
+                android:text="6.0 KM"
+                android:layout_weight="1"
+                />
+
+
+            <TextView
+                android:id="@+id/advancedKM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/red"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:text="40 KM"/>
+
+            </LinearLayout>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

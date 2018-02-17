@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:id="@+id/activity_about_us"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:paddingBottom="@dimen/activity_vertical_margin"
+android:paddingLeft="@dimen/activity_horizontal_margin"
+android:paddingRight="@dimen/activity_horizontal_margin"
+android:paddingTop="@dimen/activity_vertical_margin"
+tools:context=".activities.SignUpActivity"
+android:background="@color/lightGrey"
+android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:cardCornerRadius="40dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sign UP"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                />
+
+            <EditText
+                android:layout_marginTop="20dp"
+                android:id="@+id/edtxt_email_id"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:hint="Email ID"
+                android:background="@drawable/edit_txt_view_shape_style"
+                android:textCursorDrawable="@drawable/cursor_color"
+                android:layout_gravity="center_horizontal"/>
+
+            <EditText
+                android:layout_marginTop="20dp"
+                android:id="@+id/edtxt_password"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:hint="Enter Password"
+                android:background="@drawable/edit_txt_view_shape_style"
+                android:textCursorDrawable="@drawable/cursor_color"
+                android:inputType="textPassword" />
+
+            <EditText
+                android:layout_marginTop="20dp"
+                android:textCursorDrawable="@drawable/cursor_color"
+                android:id="@+id/edtxt_confirm_password"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:hint="Enter confirm Password"
+                android:inputType="textPassword"
+                android:background="@drawable/edit_txt_view_shape_style"
+                android:layout_gravity="center_horizontal"/>
+
+            <Button
+                android:id="@+id/btn_singup"
+                android:layout_marginTop="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SIGN UP"
+                android:background="@drawable/btn_round_shape_style"
+                android:layout_gravity="center_horizontal"/>
+
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+
+</RelativeLayout>
+

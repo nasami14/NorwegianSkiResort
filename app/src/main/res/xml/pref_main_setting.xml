@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+<PreferenceCategory android:title="@string/pref_header_apikeys">
+
+<EditTextPreference
+
+    android:key="@string/pref_key_google_api"
+    android:summary="@string/pref_summary_google_apikey"
+    android:title="@string/pref_title_google_apikey"
+    android:selectAllOnFocus="true"/>
+
+
+    <EditTextPreference
+        android:key="@string/pref_key_weather_api"
+        android:summary="@string/pref_summary_weather_apikey"
+        android:title="@string/pref_title_weather_apikey"
+        android:selectAllOnFocus="true"/>
+
+    <EditTextPreference
+        android:defaultValue="50000"
+        android:key="@string/pref_key_map_api_search_radius"
+        android:summary="50000"
+        android:title="Specify nearby search radius( In Meters)"
+        android:selectAllOnFocus="true"/>
+
+</PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_header_unit">
+        <ListPreference
+        android:defaultValue="°C"
+        android:entries="@array/temperatureUnits"
+        android:entryValues="@array/temperatureUnitsValues"
+        android:key="@string/pref_key_temp_unit"
+        android:summary="°C"
+        android:title="@string/pref_title_temp_unit"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="About App">
+        <Preference android:title="@string/pref_app_version_title"
+            android:summary="@string/pref_app_version"/>
+        </PreferenceCategory>
+</PreferenceScreen>

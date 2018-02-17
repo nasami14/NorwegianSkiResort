@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_margin="20dp"
+    android:layout_height="wrap_content"
+
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <ImageView
+            android:id="@+id/closePopup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:src="@drawable/ic_close_white_24dp"
+            android:background="@drawable/circle_background_pink"
+            />
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ski Charges"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            />
+
+        <View
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_below="@+id/rd_address"
+            android:background="@color/lightGrey"></View>
+
+
+
+
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/charges"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="Charges :"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+            <View
+                android:id="@+id/viewborder"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_below="@+id/charges"
+                android:background="@color/lightGrey"></View>
+
+
+
+            <TextView
+                android:id="@+id/chargesAdults"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Adults:"
+                android:layout_gravity="start"
+                android:layout_below="@+id/viewborder"
+                />
+
+            <TextView
+                android:id="@+id/chargesYouth"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Youth :"
+                android:layout_gravity="start"
+                android:layout_below="@+id/chargesAdults"
+                />
+
+
+            <TextView
+                android:id="@+id/chargesChildren"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Children:"
+                android:layout_gravity="start"
+                android:layout_below="@+id/chargesYouth"
+                android:layout_marginBottom="5dp"
+                />
+
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    >
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        tools:context="com.narendragurjar.org.norwegianskiresort.privateactivity.ResortRegistration"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:scrollbars="vertical"
+        android:isScrollContainer="true"
+        >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Resort Address Details :"
+
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                />
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/edtxt_resortName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/edit_text_top"
+                    android:hint="Resort Name"
+                    android:textCursorDrawable="@drawable/cursor_color"
+                    />
+                </android.support.design.widget.TextInputLayout>
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/edtxt_resort_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:hint="Resort Description"
+                    android:textCursorDrawable="@drawable/cursor_color"
+                    android:inputType="textMultiLine" />
+                    </android.support.design.widget.TextInputLayout>
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/edtxt_resort_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/edit_text_top"
+                    android:hint="Resort Address"
+                    android:textCursorDrawable="@drawable/cursor_color"
+                    />
+                    </android.support.design.widget.TextInputLayout>
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/edtxt_mobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/edit_text_top"
+                    android:hint="Mobile Number "
+                    android:inputType="phone"
+                    android:textCursorDrawable="@drawable/cursor_color"
+                    />
+</android.support.design.widget.TextInputLayout>
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/edtxt_resort_emaild"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/edit_text_top"
+                    android:textCursorDrawable="@drawable/cursor_color"
+                    android:hint="Email Id "
+                    />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/edtxt_zipcode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/edit_text_top"
+                    android:hint="Zipcode"
+                    android:inputType="number"
+                    android:textCursorDrawable="@drawable/cursor_color"
+                    />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                <Spinner
+                    android:id="@+id/edtxt_resort_province"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/edit_text_top"
+                    tools:listheader="Province List"
+                    android:entries="@array/norway_province_list"
+                    android:prompt="@string/prompt_province">
+
+                </Spinner>
+
+</android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/edtxt_country"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/edit_text_top"
+                    android:hint="Country"
+                    android:text="Norway"
+                    android:textCursorDrawable="@drawable/cursor_color"
+                    />
+</android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Timing Details :"
+
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        />
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/edtxt_openHours"
+                    android:layout_weight="0.5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Open hours"
+                    android:textCursorDrawable="@drawable/cursor_color"
+
+                    />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/edtxt_closeHours"
+                    android:layout_weight="0.5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Close hours"
+                    android:textCursorDrawable="@drawable/cursor_color"
+                    />
+</android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ski Resort information :"
+
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            />
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/edtxt_ChairLifts"
+                android:layout_weight="0.5"
+                android:layout_marginTop="@dimen/edit_text_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textCursorDrawable="@drawable/cursor_color"
+                android:hint="Chair lifts"/>
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/edtxt_tow_ropeLifts"
+                android:layout_weight="0.5"
+                android:layout_marginTop="@dimen/edit_text_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textCursorDrawable="@drawable/cursor_color"
+                android:hint="Tow Rope lifts"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/edtxt_t_Bar_J_Bar_Lifts"
+                android:layout_weight="0.5"
+                android:layout_marginTop="@dimen/edit_text_top"
+                android:layout_width="match_parent"
+                android:textCursorDrawable="@drawable/cursor_color"
+                android:layout_height="wrap_content"
+                android:hint="T-Bar/J-Bar lifts"/>
+</android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/edtxt_no_of_lifts"
+                    android:layout_weight="0.5"
+                    android:layout_marginTop="@dimen/edit_text_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Total Lifts"
+                    android:textCursorDrawable="@drawable/cursor_color"
+
+                    />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <EditText
+                android:textCursorDrawable="@drawable/cursor_color"
+                android:id="@+id/slope_easy"
+                android:layout_weight="0.5"
+                android:layout_marginTop="@dimen/edit_text_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Easy Slope distance(KM)"
+                />
+</android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/slope_Intermediate"
+                android:layout_weight="0.5"
+                android:layout_marginTop="@dimen/edit_text_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textCursorDrawable="@drawable/cursor_color"
+                android:hint="Intermediate Slope Distance(KM)"
+                />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/slope_Advanced"
+                android:layout_weight="0.5"
+                android:layout_marginTop="@dimen/edit_text_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textCursorDrawable="@drawable/cursor_color"
+                android:hint="Advanced Slope Distance (KM)"
+                />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/edtxt_slope_distance"
+                android:layout_weight="0.5"
+                android:layout_marginTop="@dimen/edit_text_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Total Slope distance(KM)"
+                android:textCursorDrawable="@drawable/cursor_color"
+
+                />
+
+</android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/chargesAdults"
+                android:layout_weight="0.5"
+                android:layout_marginTop="@dimen/edit_text_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Charges for Adults "
+                android:textCursorDrawable="@drawable/cursor_color"
+                />
+</android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/chargesChildren"
+                android:layout_weight="0.5"
+                android:layout_marginTop="@dimen/edit_text_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Charges for Children "
+                android:textCursorDrawable="@drawable/cursor_color"
+                />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/chargesYouth"
+                android:layout_weight="0.5"
+                android:layout_marginTop="@dimen/edit_text_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Charges for Youth "
+                android:textCursorDrawable="@drawable/cursor_color"
+                />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/edtxt_charges"
+                    android:layout_weight="0.5"
+                    android:layout_marginTop="@dimen/edit_text_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Extra Charges"
+                    android:textCursorDrawable="@drawable/cursor_color"
+                    />
+            </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+</android.support.v7.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp">
+                <Button
+                    android:id="@+id/btn_resort_registration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".50"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/btn_round_shape_style"
+                    android:text="Save"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_cancel_resort_registration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".50"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/btn_round_shape_style"
+                    android:text="Cancel"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/uploadResortImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".50"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/btn_round_shape_style"
+                    android:text="Upload Image"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "495298692289",
+    "firebase_url": "https://norwegian-ski-resort.firebaseio.com",
+    "project_id": "norwegian-ski-resort",
+    "storage_bucket": "norwegian-ski-resort.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:495298692289:android:e74371834e8644a3",
+        "android_client_info": {
+          "package_name": "no.amirhjelperdeg.norwegianskiresort"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "495298692289-slvr9fvt2v2vauc30rg1olt9svfruoko.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "no.amirhjelperdeg.norwegianskiresort",
+            "certificate_hash": "63c00dde1332c01cc2401819d237753927423b9e"
+          }
+        },
+        {
+          "client_id": "495298692289-qruqudsun4m07b3jtslha43qclsavdpv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3370IBR4CVFYgHsijh6jz_93pQTjHrwk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "495298692289-qruqudsun4m07b3jtslha43qclsavdpv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_about_us"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:orientation="vertical"
+        android:background="@mipmap/ic_homebackground4"
+        tools:context=".activities.LoginActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        >
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_horizontal"
+          android:layout_marginTop="20dp"
+          android:text="Sign In"
+          android:textSize="30sp"
+          android:textColor="@color/white"
+          android:textStyle="bold" />
+
+      <EditText
+          android:id="@+id/edtxt_singin_email_id"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_horizontal"
+          android:layout_marginTop="20dp"
+          android:background="@drawable/edit_txt_view_shape_style"
+          android:textCursorDrawable="@drawable/cursor_color"
+          android:hint="Email ID"
+
+          />
+
+      <EditText
+          android:id="@+id/edtxt_singin_password"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_horizontal"
+          android:layout_marginTop="20dp"
+          android:background="@drawable/edit_txt_view_shape_style"
+          android:textCursorDrawable="@drawable/cursor_color"
+          android:hint="Enter Password"
+          android:inputType="textPassword" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp">
+      <Button
+          android:id="@+id/btn_singin"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_weight=".50"
+          android:layout_gravity="center_horizontal"
+          android:layout_marginTop="30dp"
+          android:background="@drawable/btn_round_shape_style"
+          android:text="LogIn"
+          android:textColor="@color/white"
+          android:textStyle="bold" />
+
+
+      <Button
+          android:id="@+id/btn_singup"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="15dp"
+          android:layout_weight=".50"
+          android:layout_gravity="center_horizontal"
+          android:layout_marginTop="10dp"
+          android:background="@drawable/btn_round_shape_style"
+          android:text="SignUp"
+          android:textColor="@color/white"
+          android:textStyle="bold" />
+        </LinearLayout>
+
+
+     <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         android:orientation="vertical"
+         android:gravity="center"
+         android:layout_marginTop="5dp"
+         >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="gravity"
+            android:layout_marginTop="5dp"
+            android:textSize="20dp"
+            android:text="Login with social networking sites"
+            android:textColor="@color/pink"
+            android:textStyle="bold"
+            android:layout_alignParentStart="true"
+            android:layout_gravity="center_horizontal"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:clipToPadding="false"
+            >
+
+             <ImageView
+                 android:layout_marginRight="10dp"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:src="@drawable/ic_google" />
+
+             <ImageView
+                 android:layout_marginRight="10dp"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:src="@drawable/ic_facebook"/>
+
+             <ImageView
+                 android:layout_marginRight="10dp"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:src="@drawable/ic_linkedin"/>
+             <ImageView
+                 android:layout_marginRight="10dp"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:src="@drawable/ic_twitter"/>
+        </LinearLayout>
+
+
+            <RelativeLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="40dp"
+                >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:text="Copyright(C)Ski Resort service limited "
+                        android:textColor="@color/black"
+                        android:layout_alignParentBottom="true"
+                        android:gravity="center_horizontal"/>
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>
+
+
+
+
+
+
+
+
