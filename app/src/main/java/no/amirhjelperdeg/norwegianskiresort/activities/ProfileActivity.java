@@ -265,7 +265,7 @@ public class ProfileActivity extends AppCompatActivity {
                     //Toast.makeText(getApplicationContext(),"user name : "+dataSnapshot.child("name").getValue(String.class),Toast.LENGTH_LONG).show();
                     txtName.setText(dataSnapshot.child("name").getValue(String.class).toString());
                     txtEmail.setText(dataSnapshot.child("email").getValue(String.class).toString());
-                    txtEmail.setText(dataSnapshot.child("phone").getValue(String.class).toString());
+                    txtPhone.setText(dataSnapshot.child("phone").getValue(String.class).toString());
 
                 progressDialog.dismiss();
 

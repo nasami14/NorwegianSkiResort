@@ -481,20 +481,23 @@ public class NearByResortActivity  extends AppCompatActivity implements
     {
         boolean bFound=false;
 
+        // api : oslo winterpark ski senter
+        // db: winterpark
+
         String[]api_keyword=api_ResortName.split(" ");
         String[]db_keyword=db_ResortName.split(" ");
-        int index=0;
-        for (String name:api_keyword) {
 
-            if(index<db_keyword.length)
+        for (String db_name:db_keyword) {
+
+            for(String api_name:api_keyword)
             {
-                if(name.toLowerCase().contains(db_keyword[index].toLowerCase()))
+                if(db_name.toLowerCase().contains(api_name.toLowerCase()))
                 {
                     bFound=true;
                     break;
                 }
             }
-            index++;
+
 
         }
 
