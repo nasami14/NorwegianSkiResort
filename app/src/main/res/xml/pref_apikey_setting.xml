@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-<PreferenceCategory android:title="General">
+<PreferenceCategory android:title="@string/pref_header_apikeys">
+
+<EditTextPreference
+
+    android:key="@string/pref_key_google_api"
+    android:summary="@string/pref_summary_google_apikey"
+    android:title="@string/pref_title_google_apikey"
+    android:selectAllOnFocus="true"/>
+
+
+    <EditTextPreference
+        android:key="@string/pref_key_weather_api"
+        android:summary="@string/pref_summary_weather_apikey"
+        android:title="@string/pref_title_weather_apikey"
+        android:selectAllOnFocus="true"/>
 
     <EditTextPreference
         android:defaultValue="50000"

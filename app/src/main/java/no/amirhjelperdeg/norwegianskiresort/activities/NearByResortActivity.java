@@ -372,9 +372,11 @@ public class NearByResortActivity  extends AppCompatActivity implements
     {
         SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         NearByPlaceJSONParser nearByPlaceJSONParser= new NearByPlaceJSONParser();
+        String status="";
         try {
             JSONObject json = new JSONObject(response);
             //Log.d(TAG, response.toString());
+            status= json.optString("status");
             placeList=nearByPlaceJSONParser.parse(json);
             if(placeList==null ||  placeList.size()==0)
             {
@@ -389,9 +391,14 @@ public class NearByResortActivity  extends AppCompatActivity implements
         }
         catch (Exception ex)
         {
-            Log.e(TAG , "JSON parsing error ..."+ex.toString());
-            ex.printStackTrace();
-            return JSONParseResult.JSON_EXCEPTION;
+            if (status.equalsIgnoreCase("REQUEST_DENIED")) {
+                Log.e(TAG, "JSON parsing error ..."+ ex.toString());
+                return JSONParseResult.UN_AUTHORIZED_ACCESS;
+            }else
+            {
+                Log.e(TAG, "JSON parsing error ..."+ex.toString());
+                return JSONParseResult.UN_AUTHORIZED_ACCESS;
+            }
         }
 
         return  JSONParseResult.OK;
@@ -409,6 +416,7 @@ public class NearByResortActivity  extends AppCompatActivity implements
 
             boolean bFound= false;
             int counter = 0;
+
             for (ResortData resort : resortDataList) {
 
             //Toast.makeText(getApplicationContext(),"Name : "+resort.getName(),Toast.LENGTH_LONG).show();
@@ -419,7 +427,7 @@ public class NearByResortActivity  extends AppCompatActivity implements
                     String placeName = googlePlace.get("place_name");
                     String vicinity = googlePlace.get("vicinity");
                     // Toast.makeText(getApplicationContext()," "+placeName,Toast.LENGTH_LONG).show();
-                    if (placeName.toLowerCase().contains(resort.getName().toLowerCase())||
+                    if (isResortAvailableInFirebaseDatabase(placeName,resort.getName())||
                             vicinity.toLowerCase().contains(resort.getAddress().toLowerCase()
                     )) {
 
@@ -469,6 +477,32 @@ public class NearByResortActivity  extends AppCompatActivity implements
 
     }
 
+    public boolean isResortAvailableInFirebaseDatabase(String api_ResortName, String db_ResortName)
+    {
+        boolean bFound=false;
+
+        String[]api_keyword=api_ResortName.split(" ");
+        String[]db_keyword=db_ResortName.split(" ");
+        int index=0;
+        for (String name:api_keyword) {
+
+            if(index<db_keyword.length)
+            {
+                if(name.toLowerCase().contains(db_keyword[index].toLowerCase()))
+                {
+                    bFound=true;
+                    break;
+                }
+            }
+            index++;
+
+        }
+
+        return  bFound;
+
+    }
+
+
     private void setResortData(ResortData resortData)
     {
         this.resortData= resortData;
@@ -478,10 +512,9 @@ public class NearByResortActivity  extends AppCompatActivity implements
     }
     private void getNearByPlaces()
     {
-
         String PROXIMITY_RADIUS=sharedPreferences.getString(getString(R.string.pref_key_map_api_search_radius),String.valueOf(DEFAULT_RADIUS));
         new NearbyPlaces(getApplicationContext(),this,new ProgressDialog(this)).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,APITypes.GOOGLE_NEARBY_PLACES.toString()
-                ,latitude.toString(),longitude.toString(),PROXIMITY_RADIUS,"ski%20resort");
+                ,latitude.toString(),longitude.toString(),PROXIMITY_RADIUS,"Ski Resort");
     }
 
     /**

@@ -88,7 +88,7 @@ public class WeatherActivity extends AppCompatActivity {
                 inputFormat2.setTimeZone(TimeZone.getTimeZone("Europe/Oslo"));
                 todaySunrise.setText(getString(R.string.sunrise)+": "+inputFormat2.format(inputFormat3.getCalendar().getTime()));
                 inputFormat3.format(inputFormat3.parse(intent.getStringExtra("sunset")));
-                todaySunset.setText(getString(R.string.sunrise)+": "+inputFormat2.format(inputFormat3.getCalendar().getTime()));
+                todaySunset.setText(getString(R.string.sunset)+": "+inputFormat2.format(inputFormat3.getCalendar().getTime()));
             } catch (Exception e) {
                 e.printStackTrace();
                 todaySunrise.setText(getString(R.string.sunrise)+": "+intent.getStringExtra("sunrise"));

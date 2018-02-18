@@ -1,5 +1,6 @@
 package no.amirhjelperdeg.norwegianskiresort.activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -19,6 +20,12 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import no.amirhjelperdeg.norwegianskiresort.R;
 
 import java.util.regex.Matcher;
@@ -30,6 +37,8 @@ public class SignUpActivity extends AppCompatActivity {
     private Button btn_signUp;
 
     FirebaseAuth firebaseAuth;
+    private FirebaseDatabase firebaseDatabase;
+    private FirebaseUser firebaseUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +47,7 @@ public class SignUpActivity extends AppCompatActivity {
 
 
         firebaseAuth=FirebaseAuth.getInstance();// initialize firebase object
-
+        firebaseDatabase=FirebaseDatabase.getInstance();
 
         // get objects of TextBoxes
         txt_emailId=(TextView)findViewById(R.id.edtxt_email_id);
@@ -61,7 +70,7 @@ public class SignUpActivity extends AppCompatActivity {
     public  void doRegister()
     {
 
-       String emailId=txt_emailId.getText().toString();
+       final String emailId=txt_emailId.getText().toString();
         String password= txt_password.getText().toString();
         String conf_password= txt_confirmPassowrd.getText().toString();
         Matcher result=Patterns.EMAIL_ADDRESS.matcher(emailId);
@@ -104,9 +113,14 @@ public class SignUpActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"confirm password is not matched with password", Toast.LENGTH_LONG).show();
             return;
         }
-
-
         /// here we will store the users info in database
+
+        final ProgressDialog progressDialog= new ProgressDialog(this);
+        if(!progressDialog.isShowing()) {
+            progressDialog.setMessage("Saving...");
+            progressDialog.setCanceledOnTouchOutside(false);
+            progressDialog.show();
+        }
 
         try {
 
@@ -116,14 +130,11 @@ public class SignUpActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
 
                             if (task.isSuccessful()) {
-                                Toast.makeText(getApplicationContext(), "User is registered successfully !!", Toast.LENGTH_LONG).show();
+                                saveProfileData("Your Name",emailId,"Update Your phone",progressDialog);
                             } else {
                                 Toast.makeText(getApplicationContext(), "user is not registered  !!", Toast.LENGTH_LONG).show();
                             }
 
-                            finish();// finish signup activity
-                            // will start login activity
-                            startActivity(new Intent(getApplicationContext(),LoginActivity.class));
 
                         }
                     }).addOnFailureListener(this, new OnFailureListener() {
@@ -131,20 +142,51 @@ public class SignUpActivity extends AppCompatActivity {
                 public void onFailure(@NonNull Exception e) {
                     e.printStackTrace();
                     Log.d("==============",e.getMessage());
-                    //Toast.makeText(getApplicationContext(), "Error : "+e.getMessage(), Toast.LENGTH_LONG).show();
+                    progressDialog.dismiss();
+                    Toast.makeText(getApplicationContext(), "SignUp Error : "+e.getMessage(), Toast.LENGTH_LONG).show();
                 }
             });
 
         }
         catch (Throwable e)
         {
-            Log.d("----Error : ----",e.getMessage());
+            progressDialog.dismiss();
+            Log.d("Signup Error : ----",e.toString());
+            Toast.makeText(getApplicationContext(), "SignUp Error : "+e.getMessage(), Toast.LENGTH_LONG).show();
         }
 
 
     }
 
+    public void saveProfileData(final String name, final String email, final String phone,final ProgressDialog progressDialog)
+    {
+        firebaseUser=firebaseAuth.getCurrentUser();
+        DatabaseReference mydDBRef=firebaseDatabase.getReference("users");
+        DatabaseReference myData=mydDBRef.child(firebaseUser.getUid());
+        myData.child("name").setValue(name.toString());
+        myData.child("email").setValue(email.toString());
+        myData.child("phone").setValue(phone.toString());
+        myData.child("role").setValue("user");
 
+        // insert into the database
+        myData.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                progressDialog.dismiss();
+                finish();// finish signup activity
+                // will start login activity
+                startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                Toast.makeText(getApplicationContext(), "User Created.", Toast.LENGTH_LONG).show();
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {
+                progressDialog.dismiss();
+                Toast.makeText(getApplicationContext(), "Signup Failed", Toast.LENGTH_LONG).show();
+            }
+        });
+
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will

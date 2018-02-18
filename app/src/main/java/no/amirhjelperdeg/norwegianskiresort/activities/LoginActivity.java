@@ -9,6 +9,7 @@ import android.os.Bundle;
 
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,6 +19,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import no.amirhjelperdeg.norwegianskiresort.MainActivity;
 import no.amirhjelperdeg.norwegianskiresort.R;
 
@@ -29,6 +36,8 @@ public class LoginActivity extends AppCompatActivity {
     private TextView txt_userName,txt_password;
 
     FirebaseAuth firebaseAuth;
+    private FirebaseDatabase firebaseDatabase;
+    private FirebaseUser firebaseUser;
 
     SharedPreferences userLoginInfo;
     @Override
@@ -38,6 +47,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         firebaseAuth= FirebaseAuth.getInstance();
+        firebaseDatabase=FirebaseDatabase.getInstance();
 
         btn_login=(Button)findViewById(R.id.btn_singin);
         btn_signup=(Button)findViewById(R.id.btn_singup);
@@ -101,9 +111,10 @@ public class LoginActivity extends AppCompatActivity {
                     editor.putString("emailId",emailId);
                     editor.putString("password",password);
                     editor.commit();
+                    firebaseUser=firebaseAuth.getCurrentUser();
+                    setRoleAndOpenMainActivity();
 
-                    finish();// close login activity
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+
                 }
                 else
                 {
@@ -121,6 +132,38 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+
+    /**
+     * get logged in user role and open Main Activity
+     * @return
+     */
+
+    private void setRoleAndOpenMainActivity()
+    {
+
+        DatabaseReference dbRef  =firebaseDatabase.getReference("users/"+firebaseUser.getUid());
+        dbRef.child("role").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                String roleId=String.valueOf(dataSnapshot.getValue(String.class));
+
+                userLoginInfo= getSharedPreferences("logindata", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor=userLoginInfo.edit();
+                editor.putString("roleId",roleId);
+                editor.commit();
+
+                finish();// close login activity
+                startActivity(new Intent(getApplicationContext(), MainActivity.class).putExtra("isLoggedIn",true));
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(getApplicationContext(), "Something went wrong, please contact.",Toast.LENGTH_LONG).show();
+            }
+
+        });
+    }
 
 
 }

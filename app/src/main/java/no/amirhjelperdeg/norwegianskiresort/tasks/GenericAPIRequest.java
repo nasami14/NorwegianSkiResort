@@ -155,6 +155,10 @@ public abstract class GenericAPIRequest extends AsyncTask<String, String, TaskOu
                 } else if (JSONParseResult.JSON_EXCEPTION.equals(JSONParseResult)) {
                     Snackbar.make(activity.findViewById(android.R.id.content), context.getString(R.string.msg_err_parsing_json), Snackbar.LENGTH_LONG).show();
                 }
+                else if(JSONParseResult.UN_AUTHORIZED_ACCESS.equals(JSONParseResult))
+                {
+                    Snackbar.make(activity.findViewById(android.R.id.content), context.getString(R.string.msg_un_auth_access), Snackbar.LENGTH_LONG).show();
+                }
                 break;
             }
             case TOO_MANY_REQUESTS: {
@@ -211,15 +215,14 @@ public abstract class GenericAPIRequest extends AsyncTask<String, String, TaskOu
     private URL getNearByPlaceUrl(String latitude , String longitude , String PROXIMITY_RADIUS,String nearbyPlace) throws UnsupportedEncodingException,MalformedURLException
     {
         StringBuilder googlePlaceUrl = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
-        googlePlaceUrl.append("location="+latitude+","+longitude);
-        googlePlaceUrl.append("&radius="+PROXIMITY_RADIUS);
-        googlePlaceUrl.append("&type="+nearbyPlace);
-        googlePlaceUrl.append("&keyword="+nearbyPlace);
+        googlePlaceUrl.append("location="+latitude.trim()+","+longitude.trim());
+        googlePlaceUrl.append("&radius="+PROXIMITY_RADIUS.trim());
+        googlePlaceUrl.append("&type="+nearbyPlace.replaceAll(" ","%20"));
+        googlePlaceUrl.append("&keyword="+nearbyPlace.replaceAll(" ","%20"));
         googlePlaceUrl.append("&sensor=true");
         googlePlaceUrl.append("&key="+APIKey);
-        Log.d("MapsURL", "url = "+googlePlaceUrl.toString());
-        Log.w("MapsURL", "url = "+googlePlaceUrl.toString());
-        Log.i("MapsActivity", "url = "+googlePlaceUrl.toString());
+
+        Log.d("MapsActivity", "url = "+googlePlaceUrl.toString());
         return new URL(googlePlaceUrl.toString());
     }
     private static void close(Closeable x) {

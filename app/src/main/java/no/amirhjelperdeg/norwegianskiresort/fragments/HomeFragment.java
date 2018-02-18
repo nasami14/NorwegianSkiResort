@@ -24,6 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import no.amirhjelperdeg.norwegianskiresort.R;
+import no.amirhjelperdeg.norwegianskiresort.activities.AccessLiftActivity;
 import no.amirhjelperdeg.norwegianskiresort.activities.NearByResortActivity;
 import no.amirhjelperdeg.norwegianskiresort.activities.TransportationActivity;
 import no.amirhjelperdeg.norwegianskiresort.database_models.ResortData;
@@ -116,6 +117,7 @@ public class HomeFragment extends Fragment {
         fAuth= FirebaseAuth.getInstance();
         imgFindResort=getView().findViewById(R.id.img_find_resort_fraghome);
         imgNearByResort=getView().findViewById(R.id.img_nearby_resort_fraghome);
+        imgAccessLift=getView().findViewById(R.id.img_accesslift_fraghome);
 
         imgTransport=getView().findViewById(R.id.img_trasnport_fraghome);
 
@@ -138,6 +140,14 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getContext(),TransportationActivity.class));
+            }
+        });
+
+        imgAccessLift.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(getContext(), AccessLiftActivity.class));
             }
         });
     }

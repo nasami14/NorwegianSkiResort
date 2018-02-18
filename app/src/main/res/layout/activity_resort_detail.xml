@@ -54,21 +54,20 @@
             android:layout_below="@+id/rd_address"
             android:background="@color/lightGrey"></View>
     </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
         android:layout_marginTop="5dp"
         android:clipToPadding="false"
-        >
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <android.support.v7.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            app:cardBackgroundColor="@android:color/transparent"
-            >
+            android:layout_marginRight="30dp"
+            app:cardBackgroundColor="@android:color/transparent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -78,52 +77,50 @@
 
                 <ImageView
                     android:id="@+id/rd_img_slope"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:background="@drawable/circle_background_purple"
-                    android:padding="10dp"
+                    android:padding="15dp"
                     android:src="@drawable/ic_slope" />
 
                 <TextView
-                    android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:text="Slopes"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
+
         <android.support.v7.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            app:cardBackgroundColor="@android:color/transparent"
-            >
+            app:cardBackgroundColor="@android:color/transparent">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
                 android:gravity="center"
-                >
+                android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/rd_img_lifts"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:background="@drawable/circle_background_yellow"
-                    android:src="@drawable/ic_lift"
-                    android:padding="10dp"
-                    />
+                    android:padding="15dp"
+                    android:src="@drawable/ic_lift" />
 
                 <TextView
-                    android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:text="Lifts"
-                    android:textStyle="bold"
                     android:textColor="@color/black"
-                    />
+                    android:textStyle="bold" />
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
@@ -140,7 +137,7 @@
         <android.support.v7.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_marginRight="30dp"
             app:cardBackgroundColor="@android:color/transparent"
             >
 
@@ -152,10 +149,10 @@
 
                 <ImageView
                     android:id="@+id/rd_img_times"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:background="@drawable/circle_background_pink"
-                    android:padding="10dp"
+                    android:padding="15dp"
                     android:src="@drawable/ic_access_time_24dp" />
 
                 <TextView
@@ -183,11 +180,11 @@
 
                 <ImageView
                     android:id="@+id/rd_img_weather"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:background="@drawable/circle_background_sky"
                     android:src="@drawable/ic_cloud_black_24dp"
-                    android:padding="10dp"
+                    android:padding="15dp"
                     />
 
                 <TextView
@@ -216,7 +213,7 @@
         <android.support.v7.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_marginRight="30dp"
             app:cardBackgroundColor="@android:color/transparent"
             >
 
@@ -228,10 +225,10 @@
 
                 <ImageView
                     android:id="@+id/rd_img_telephone"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:background="@drawable/circle_background_green"
-                    android:padding="10dp"
+                    android:padding="15dp"
                     android:src="@drawable/ic_call_black_24dp" />
 
                 <TextView
@@ -259,11 +256,11 @@
 
                 <ImageView
                     android:id="@+id/rd_img_charge"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:background="@drawable/circle_background_purple"
                     android:src="@drawable/ic_attach_money_black_24dp"
-                    android:padding="10dp"
+                    android:padding="15dp"
                     />
                 <TextView
                     android:layout_marginTop="10dp"

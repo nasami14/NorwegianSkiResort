@@ -399,9 +399,13 @@ public class ResortDetail extends AppCompatActivity {
 //  call the Geocode api and weather api after click on  weather popup
     public void displayWeatherData()
     {
-        ProgressDialog progressDialog= new ProgressDialog(this);
-        new WeatherData(getApplicationContext(),this,progressDialog).execute(APITypes.WEATHER_BY_LAT_LONG.toString(),
-                lat.toString(),lng.toString());
+        if(lat!=null && lng!=null) {
+        ProgressDialog progressDialog = new ProgressDialog(this);
+        new WeatherData(getApplicationContext(), this, progressDialog).execute(APITypes.WEATHER_BY_LAT_LONG.toString(),
+                lat.toString(), lng.toString());
+    }else{
+            Toast.makeText(getApplicationContext(),"Location Not found",Toast.LENGTH_LONG).show();
+        }
 
     }
     public void setResortLocation()
@@ -429,9 +433,11 @@ public class ResortDetail extends AppCompatActivity {
     public JSONParseResult parseGeocodeAPIResponse(String response)
     {
         SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-
+        String status="";
         try {
+
             JSONObject json = new JSONObject(response);
+            status= json.optString("status");
             JSONArray results = json.getJSONArray("results");
 
             JSONObject geometry = (JSONObject) results.get(0);
@@ -447,9 +453,15 @@ public class ResortDetail extends AppCompatActivity {
             editor.commit();
         }catch (JSONException ex)
         {
-            Log.e(TAG , "JSON parsing error ...");
-            ex.printStackTrace();
-            return JSONParseResult.JSON_EXCEPTION;
+            if (status.equalsIgnoreCase("REQUEST_DENIED")) {
+                Log.e(TAG, "JSON parsing error ..."+ ex.toString());
+
+                return JSONParseResult.UN_AUTHORIZED_ACCESS;
+            }else
+            {
+                Log.e(TAG, "JSON parsing error ..."+ex.toString());
+                return JSONParseResult.UN_AUTHORIZED_ACCESS;
+            }
         }
         return JSONParseResult.OK;
     }
@@ -464,6 +476,9 @@ public class ResortDetail extends AppCompatActivity {
             final String code = reader.optString("cod");
             if ("404".equals(code)) {
                 return JSONParseResult.CITY_NOT_FOUND;
+            }
+            if ("401".equals(code)) {
+                return JSONParseResult.UN_AUTHORIZED_ACCESS;
             }
 
             String city = reader.getString("name");
@@ -545,7 +560,7 @@ public class ResortDetail extends AppCompatActivity {
             //
 
         } catch (JSONException e) {
-            System.out.println("JSONException Data:"+response);
+            Log.d("WeatherAPI Exception",e.toString());
             e.printStackTrace();
             return JSONParseResult.JSON_EXCEPTION;
         }

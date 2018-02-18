@@ -43,6 +43,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import no.amirhjelperdeg.norwegianskiresort.activities.AboutActivity;
+import no.amirhjelperdeg.norwegianskiresort.activities.AccessLiftActivity;
 import no.amirhjelperdeg.norwegianskiresort.activities.LoginActivity;
 import no.amirhjelperdeg.norwegianskiresort.activities.NearByResortActivity;
 import no.amirhjelperdeg.norwegianskiresort.activities.ProfileActivity;
@@ -90,7 +91,6 @@ public class MainActivity extends AppCompatActivity
     StorageReference storageRef;
     Uri profileUri;
     String roleId=" ";
-    Menu allMenu;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -127,6 +127,7 @@ public class MainActivity extends AppCompatActivity
         firebaseUser= firebaseAuth.getCurrentUser();
         userLoginInfo =getApplicationContext().getSharedPreferences("logindata", Context.MODE_PRIVATE);
         emailId=userLoginInfo.getString("emailId",null);
+        roleId=userLoginInfo.getString("roleId","user");
 
         fdb= FirebaseDatabase.getInstance();
         // initialize firabse storage
@@ -151,7 +152,8 @@ public class MainActivity extends AppCompatActivity
                         editor.putString("emailId",emailId);
                         editor.putString("password",password);
                         editor.commit();
-                        roleId=getRoleId();
+                        if(storageRef!=null)
+                            loadNaveHeader();// load the menu header : image and email id
                     }
                     else
                     {
@@ -243,7 +245,7 @@ public class MainActivity extends AppCompatActivity
 
                     case  R.id.nav_accesslift:
                         navItemIndex=3;
-                        startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
+                        startActivity(new Intent(getApplicationContext(),AccessLiftActivity.class));
                         return  true;
                     case R.id.nav_settings:
                         navItemIndex=4;
@@ -400,8 +402,14 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.main,menu);
-        allMenu=menu;
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        if(roleId.equalsIgnoreCase("user"))
+            menu.findItem(R.id.action_add_resort).setVisible(false);
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
@@ -415,7 +423,7 @@ public class MainActivity extends AppCompatActivity
         }
         else if(menuId==R.id.action_add_resort)
         {
-            if(roleId.equals("admin")) {
+            if(roleId.equalsIgnoreCase("admin")) {
                 startActivity(new Intent(getApplicationContext(), ResortRegistration.class));
             }
         }
@@ -439,38 +447,5 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    /**
-     * get logged in user role and accordingly hide add resort menu
-     * @return
-     */
 
-    public String getRoleId()
-    {
-        DatabaseReference dbRef  =fdb.getReference("users/"+firebaseUser.getUid());
-        dbRef.child("role").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                roleId=String.valueOf(dataSnapshot.getValue(String.class));
-                if(roleId!="admin") { // if its not admin then hide the menu
-                    MenuItem addResort = allMenu.findItem(R.id.action_add_resort);
-                    addResort.setVisible(false);
-                }
-                SharedPreferences.Editor editor=userLoginInfo.edit();
-                editor.putString("roleId",roleId);
-                editor.commit();
-                //Log.d("info", " nsg ------------"+roleId);
-                if(storageRef!=null)
-                    loadNaveHeader();// load the menu header : image and email id
-
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                if(storageRef!=null)
-                    loadNaveHeader();// load the menu header : image and email id
-            }
-
-        });
-        return roleId;
-    }
 }

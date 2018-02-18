@@ -108,11 +108,14 @@ public class SettingsActivity extends AppCompactPrefrenceActivity {
         @Override
         public void onCreate(@Nullable Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            addPreferencesFromResource(R.xml.pref_main_setting);
 
-            PreferenceScreen screen = getPreferenceScreen();
+            if(roleId.equalsIgnoreCase("admin")) {
+                addPreferencesFromResource(R.xml.pref_apikey_setting);
+            }else{
+                addPreferencesFromResource(R.xml.pref_main_setting);
+            }
 
-
+     /*       PreferenceScreen screen = getPreferenceScreen();
             if(roleId.equalsIgnoreCase("admin")) {
                 bindPrefrenceSummaryToValue((findPreference(getString(R.string.pref_key_google_api))));
                 bindPrefrenceSummaryToValue((findPreference(getString(R.string.pref_key_weather_api))));
@@ -123,8 +126,8 @@ public class SettingsActivity extends AppCompactPrefrenceActivity {
                 screen.removePreference(pref);
                 Preference pref2 = getPreferenceManager().findPreference(getString(R.string.pref_key_weather_api));
                 screen.removePreference(pref2);
+            }*/
 
-            }
             bindPrefrenceSummaryToValue((findPreference(getString(R.string.pref_key_temp_unit))));
             bindPrefrenceSummaryToValue((findPreference(getString(R.string.pref_key_map_api_search_radius))));
 

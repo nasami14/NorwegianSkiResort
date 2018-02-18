@@ -34,10 +34,14 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="update profile"
+                android:text="User Name"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:textSize="21sp"/>
+                android:textSize="20sp"
+                android:drawableRight="@drawable/ic_mode_edit_black_24dp"
+                android:drawablePadding="6dp"
+                />
+
         </LinearLayout>
 
     </RelativeLayout>
@@ -64,9 +68,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
-                android:text="update email"/>
+                android:text="user email"
+                android:textSize="20sp"
+                />
+            <TextView
+                android:id="@+id/editUserEmail"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/ic_mode_edit_black_24dp"
+                android:drawablePadding="6dp"
+                />
         </LinearLayout>
-        <LinearLayoutt
+        <LinearLayout
             android:layout_marginTop="25dp"
             android:orientation="horizontal"
             android:paddingLeft="25dp"
@@ -83,8 +97,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
-                android:text="update mobile no"/>
-        </LinearLayoutt>
+                android:text="user phone"
+                android:textSize="20sp"
+             />
+            <TextView
+                android:id="@+id/editUserMobile"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/ic_mode_edit_black_24dp"
+                android:drawablePadding="6dp"
+                />
+        </LinearLayout>
 
 
     </LinearLayout>

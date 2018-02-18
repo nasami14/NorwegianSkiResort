@@ -1,20 +1,24 @@
 package no.amirhjelperdeg.norwegianskiresort.activities;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,6 +59,8 @@ public class ProfileActivity extends AppCompatActivity {
     FirebaseStorage storage ;
     Uri imgFilePath;
 
+    private TextView userEditIcon,emailEditIcon,phoneEditIcon;
+
 
 
     @Override
@@ -74,6 +80,13 @@ public class ProfileActivity extends AppCompatActivity {
         txtEmail=(TextView) findViewById(R.id.textViewEmail);
         txtPhone=(TextView)findViewById(R.id.txtViewPhone);
 
+        // get drawable icon for each field
+        userEditIcon=(TextView)findViewById(R.id.profile_name) ;
+        emailEditIcon=(TextView)findViewById(R.id.editUserEmail);
+        phoneEditIcon=(TextView)findViewById(R.id.editUserMobile);
+
+        // set click listenr on each edit icon
+
         btnEditProfile=(Button)findViewById(R.id.edit_profile);
 
         btnEditProfile.setOnClickListener(new View.OnClickListener() {
@@ -83,7 +96,6 @@ public class ProfileActivity extends AppCompatActivity {
                 editProfileDialog();
             }
         });
-
 
 
         profileImage.setOnClickListener(new View.OnClickListener() {
@@ -117,12 +129,128 @@ public class ProfileActivity extends AppCompatActivity {
                 @Override
                 public void onFailure(@NonNull Exception exception) {
                     // Handle any errors
-                    progressDialog.dismiss();
-                    Toast.makeText(getApplicationContext(),"Failed to fetch profile pic",Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getApplicationContext(),"Failed to fetch profile pic",Toast.LENGTH_LONG).show();
+                    showUserData(progressDialog);
                 }
             });
 
+            userEditIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    updateName();
+                }
+            });
+
+        emailEditIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                updateEmail();
+            }
+        });
+
+        phoneEditIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                updatePhone();
+            }
+        });
+
     }
+
+    private void updateName()
+    {
+        final AlertDialog.Builder popupDialog = new AlertDialog.Builder(ProfileActivity.this);
+
+        popupDialog.setTitle("Update User Name");
+        popupDialog.setMessage("Enter user name");
+        final EditText input=new EditText(this);
+        LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT);
+        input.setLayoutParams(params);
+        popupDialog.setView(input);
+        popupDialog.setPositiveButton("Update", new DialogInterface.OnClickListener() {
+           @Override
+           public void onClick(DialogInterface dialog, int which) {
+
+               if(!TextUtils.isEmpty(input.getText()))
+               saveProfileData(input.getText().toString(),txtEmail.getText().toString(),txtPhone.getText().toString());
+               else
+                   Toast.makeText(getApplicationContext(), "Enter Value",Toast.LENGTH_LONG).show();
+
+           }
+       }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+           @Override
+           public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+           }
+       }).show();
+    }
+
+
+
+
+    private void updateEmail()
+    {
+        final AlertDialog.Builder popupDialog = new AlertDialog.Builder(ProfileActivity.this);
+
+        popupDialog.setTitle("Update Email");
+        popupDialog.setMessage("Enter Email");
+        final EditText input=new EditText(this);
+        LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT);
+        input.setLayoutParams(params);
+        popupDialog.setView(input);
+        popupDialog.setPositiveButton("Update", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                if(!TextUtils.isEmpty(input.getText()))
+                    saveProfileData(txtName.getText().toString(),input.getText().toString(),txtPhone.getText().toString());
+                else
+                    Toast.makeText(getApplicationContext(), "Enter Value",Toast.LENGTH_LONG).show();
+
+            }
+        }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        }).show();
+    }
+
+
+
+    private void updatePhone()
+    {
+        final AlertDialog.Builder popupDialog = new AlertDialog.Builder(ProfileActivity.this);
+
+        popupDialog.setTitle("Update Phone");
+        popupDialog.setMessage("Enter Phone no.");
+        final EditText input=new EditText(this);
+        LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT);
+        input.setLayoutParams(params);
+        popupDialog.setView(input);
+        popupDialog.setPositiveButton("Update", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                if(!TextUtils.isEmpty(input.getText()))
+                    saveProfileData(txtName.getText().toString(),txtEmail.getText().toString(),input.getText().toString());
+                else
+                    Toast.makeText(getApplicationContext(), "Enter Value",Toast.LENGTH_LONG).show();
+
+            }
+        }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        }).show();
+
+    }
+
+
 
     /**
      *  method to set user  information
