@@ -457,10 +457,16 @@ public class ResortDetail extends AppCompatActivity {
                 Log.e(TAG, "JSON parsing error ..."+ ex.toString());
 
                 return JSONParseResult.UN_AUTHORIZED_ACCESS;
-            }else
+            }
+            else if (status.equalsIgnoreCase("ZERO_RESULTS")) {
+                Log.e(TAG, "API Returned ZERO_RESULTS "+ ex.toString());
+
+                return JSONParseResult.ZERO_RESULTS;
+            }
+            else
             {
                 Log.e(TAG, "JSON parsing error ..."+ex.toString());
-                return JSONParseResult.UN_AUTHORIZED_ACCESS;
+                return JSONParseResult.JSON_EXCEPTION;
             }
         }
         return JSONParseResult.OK;

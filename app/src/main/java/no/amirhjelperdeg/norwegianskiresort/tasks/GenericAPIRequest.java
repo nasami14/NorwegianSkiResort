@@ -66,6 +66,7 @@ public abstract class GenericAPIRequest extends AsyncTask<String, String, TaskOu
                 if (zeroParam.toString().equalsIgnoreCase(APITypes.GEOCODE_BY_ADDRESS_COUNTRY_ZIPCODE.toString())) {
                     if (params.length >= 6) {
                         url=provideGeocodeAPIURL(params[1], params[2], params[3], params[4], params[5]);
+
                     } else {
                         output.taskResult = TaskResult.BAD_INPUTES;
                     }
@@ -89,6 +90,7 @@ public abstract class GenericAPIRequest extends AsyncTask<String, String, TaskOu
             if (response.isEmpty()) {
 
                 Log.i("URL", url.toString());
+                Log.d("URL", url.toString());
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                 if (urlConnection.getResponseCode() == 200)
                 {
@@ -158,6 +160,10 @@ public abstract class GenericAPIRequest extends AsyncTask<String, String, TaskOu
                 else if(JSONParseResult.UN_AUTHORIZED_ACCESS.equals(JSONParseResult))
                 {
                     Snackbar.make(activity.findViewById(android.R.id.content), context.getString(R.string.msg_un_auth_access), Snackbar.LENGTH_LONG).show();
+                }
+                else if(JSONParseResult.ZERO_RESULTS.equals(JSONParseResult))
+                {
+                    Snackbar.make(activity.findViewById(android.R.id.content), context.getString(R.string.msg_zero_results), Snackbar.LENGTH_LONG).show();
                 }
                 break;
             }

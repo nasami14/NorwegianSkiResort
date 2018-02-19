@@ -456,8 +456,6 @@ public class NearByResortActivity  extends AppCompatActivity implements
 
                         mMap.addMarker(markerOptions);
                         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-                        mMap.animateCamera(CameraUpdateFactory.zoomBy(10.5f));
-
 
                         if (counter > 8)// we need only 10 , index : 0 1 2 3 4 5 6 7 8 9
                             break;
@@ -469,6 +467,8 @@ public class NearByResortActivity  extends AppCompatActivity implements
             }
             if(!bFound)
                Toast.makeText(getApplicationContext(), "No ski resort found", Toast.LENGTH_LONG).show();
+            else
+                mMap.animateCamera(CameraUpdateFactory.zoomBy(6.5f));
         }
         else
             {
